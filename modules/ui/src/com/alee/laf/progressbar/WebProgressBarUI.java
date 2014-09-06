@@ -463,7 +463,9 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
         final Graphics2D g2d = ( Graphics2D ) g;
 
         // Outer border
-        paintProgressBarBorder ( c, g2d );
+		if (!(c instanceof JProgressBar) || ((JProgressBar) c).isBorderPainted()) {
+			paintProgressBarBorder ( c, g2d );
+		}
 
         // Progress bar
         if ( progressBar.getValue () > progressBar.getMinimum () )
