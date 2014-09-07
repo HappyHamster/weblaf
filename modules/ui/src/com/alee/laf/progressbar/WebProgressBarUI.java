@@ -530,7 +530,9 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
             }
 
             // Border
-            g2d.setPaint ( c.isEnabled () ? Color.GRAY : Color.LIGHT_GRAY );
+			if (!(c instanceof JProgressBar) || ((JProgressBar) c).isBorderPainted()) {
+				g2d.setPaint ( c.isEnabled () ? Color.GRAY : Color.LIGHT_GRAY );
+			}
             g2d.draw ( is );
         }
 
